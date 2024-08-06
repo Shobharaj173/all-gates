@@ -1,0 +1,133 @@
+Verilog code and Test bench
+module andgate (c,a,b);
+input a,b;
+output c;
+assign c = a & b;
+endmodule
+module and_t;
+reg a,b;
+wire c;
+andgate and_test(c,a,b);
+initial
+begin
+#10
+a = 1'b0;b = 1'b0;
+#10
+a = 1'b0;b = 1'b1;
+#10
+a = 1'b1;b = 1'b0;
+#10
+a= 1'b1;b = 1'b1;
+end
+endmodule
+Verilog code nand Test bench
+module nandgate (c,a,b);
+input a,b;
+output c;
+reg d;
+always @ (a or b)
+begin
+d <= ~(a & b);
+end
+assign c =d;
+endmodule
+module nand_t;
+reg a,b;
+wire c;
+nandgate nand_test(c,a,b);
+initial
+begin
+#10
+a = 1'b0;b = 1'b0;
+#10
+a = 1'b0;b = 1'b1;
+#10
+a = 1'b1;b = 1'b0;
+#10
+a= 1'b1;b = 1'b1;
+end
+endmodule
+
+Dept of ECE, Dr.AIT, Bangalore Page 7
+CMOS VLSI Design Laboratory (18ECL67) VI SEM
+Verilog code nor Test bench
+
+module norgate (c,a,b);
+input a,b;
+output c;
+reg d;
+always @ (a or b)
+begin
+d <= ~(a | b);
+end
+assign c = d;
+endmodule
+
+module nor_t;
+reg a,b;
+wire c;
+norgate nor_test(c,a,b);
+initial
+begin
+#10
+a = 1'b0;b = 1'b0;
+#10
+a = 1'b0;b = 1'b1;
+#10
+a = 1'b1;b = 1'b0;
+#10
+a= 1'b1;b = 1'b1;
+end
+endmodule
+Verilog code or Test bench
+
+module orgate (c,a,b);
+input a,b;
+output c;
+assign c = a | b;
+endmodule
+
+module or_t;
+reg a,b;
+wire c;
+orgate or_test(c,a,b);
+initial
+begin
+#10
+a = 1'b0;b = 1'b0;
+#10
+a = 1'b0;b = 1'b1;
+#10
+a = 1'b1;b = 1'b0;
+#10
+a= 1'b1;b = 1'b1;
+end
+endmodule
+Dept of ECE, Dr.AIT, Bangalore Page 8
+CMOS VLSI Design Laboratory (18ECL67) VI SEM
+Verilog code or Test bench
+
+module xor (c,a,b);
+input a,b;
+output c;
+always @ (a or b)
+begin
+c < = a ^ b;
+end
+endmodule
+module xor_t;
+reg a,b;
+wire c;
+and xor_test(c,a,b);
+initial
+begin
+#10
+a = 1'b0;b = 1'b0;
+#10
+a = 1'b0;b = 1'b1;
+#10
+a = 1'b1;b = 1'b0;
+#10
+a= 1'b1;b = 1'b1;
+end
+endmodule
